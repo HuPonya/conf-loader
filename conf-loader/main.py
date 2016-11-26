@@ -86,9 +86,9 @@ def _create_conf(tenv, config):
 def _gitlab_conf(config):
     # Download gitlab files with token
     # https://gitlab.com/<group_name>/<project_name>/raw/master/<f??older>/<file_name>?p??rivate_token=<your_key>
-    logging.debug("Loading gitlab files %s", config['path'])
+    logging.debug("Loading gitlab files %s", config['name'])
     with open(config['dest'], 'wb') as handle:
-        url = "%s/%s" % (GITLAB_BASEURL, config['path'])
+        url = "%s/%s" % (GITLAB_BASEURL, os.environ[config['name']])
         response = requests.get(url, headers=GITLAB_HEADERS,
                                 timeout=REQUESET_TIMEOUT, stream=True,
                                 allow_redirects=False)

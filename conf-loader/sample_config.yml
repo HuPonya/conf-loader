@@ -17,8 +17,7 @@ configs:
     # relative paths, config file destination
     dest: tk_wechat_server/web_weixin/js/config.js
     
+    # when type is gitlab, conf-loader will use name identify environ key to load file path
   - name: conf2
     type: gitlab
-    # gitlab repository files path, gitlab_baseurl + conf path = full path
-    path: Cheeto-Breath.jpg
     dest: tk_wechat_server/Cheeto-Breath.jpg
