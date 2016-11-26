@@ -1,3 +1,5 @@
 future==0.15.2
-PyYAML
-Jinja2
+PyYAML==3.12
+Jinja2==2.8
+requests==2.12.1
+pyOpenSSL==16.2.0

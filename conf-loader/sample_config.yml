@@ -1,0 +1,24 @@
+# Sample config file
+# this config file is store in project_dir/.ci/config/config.yml, conf-loader is only try to read this path
+#  
+
+version: '1'
+debug: false
+# Gitlab vars
+gitlab_token: 8gqkRyoHfeuJJKXKzPDd
+gitlab_baseurl: http://gitlab.a.net:9090/op/prodfiles/raw/master
+configs:
+
+  - name: conf1
+    # config file type, jinjia2 template or gitlab repository
+    type: tpl
+    # jinjia2 template file name, you need put file in project_dir/.ci/config/
+    src: tk_wechat_config_js.j2
+    # relative paths, config file destination
+    dest: tk_wechat_server/web_weixin/js/config.js
+    
+  - name: conf2
+    type: gitlab
+    # gitlab repository files path, gitlab_baseurl + conf path = full path
+    path: Cheeto-Breath.jpg
+    dest: tk_wechat_server/Cheeto-Breath.jpg
