@@ -7,6 +7,7 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 from builtins import str
+from builtins import bytes
 
 from future import standard_library
 
@@ -20,7 +21,6 @@ import jinja2
 from jinja2.exceptions import UndefinedError
 
 standard_library.install_aliases()
-
 # Enable verified HTTPS requests on older Pythons
 # http://urllib3.readthedocs.org/en/latest/security.html
 if sys.version_info[0] == 2:
@@ -71,9 +71,10 @@ def _create_conf(tenv, config):
     logging.debug("Loading template %s", config['src'])
     template = tenv.get_template(config['src'])
 
-    with open(config['dest'], 'w') as f:
+    with open(config['dest'], 'wb') as f:
         try:
-            f.write(template.render(os.environ))
+            out = bytes(template.render(os.environ), "utf-8")
+            f.write(out)
         except UndefinedError as err:
             logging.error("Can't parse template:%s, %s",
                           config['src'], err)
